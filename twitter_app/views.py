@@ -54,6 +54,7 @@ class OnePost_ViewSet(APIView):
       post_results = Post.objects.get(id=id)
       post = Post_Serializer(post_results)
       comments_results = Comment.objects.filter(post=id)
+      print(comments_results[2].user.name)
       comments = Comment_Serializer(comments_results, many=True)
       return Response({"post":post.data,"comments":comments.data})
     except:

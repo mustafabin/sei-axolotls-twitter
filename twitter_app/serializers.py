@@ -28,5 +28,5 @@ class Comment_Serializer(serializers.BaseSerializer):
       return {
       "id":instance.id,
       "content": instance.content,
-      "user": instance.post.user.name,
+      "user": instance.user.name,
     }
