@@ -1,4 +1,3 @@
-from unicodedata import name
 from rest_framework.views import APIView
 from django.contrib.auth.models import User
 from django.contrib import auth
@@ -53,7 +52,6 @@ class LoginView(APIView):
     password = data["password"]
     try:
       user = auth.authenticate(username=username, password=password)
-      print(user)
       if user is not None:
           auth.login(request, user)
           return Response({"success": "User authenticated",

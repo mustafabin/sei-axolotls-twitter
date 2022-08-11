@@ -16,15 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from twitter_app.views import UserProfile_ViewSet, Comment_ViewSet,Post_ViewSet
+from twitter_app.views import UserProfile_ViewSet,Post_ViewSet
 router = routers.DefaultRouter()
 
 router.register(r'profiles', UserProfile_ViewSet)
-router.register(r'comments', Comment_ViewSet)
 router.register(r'post', Post_ViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('', include('twitter_app.urls')),
     path('user/', include('user_auth.urls')),
     path('admin/', admin.site.urls),
 ]

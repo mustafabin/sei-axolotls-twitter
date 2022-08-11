@@ -14,3 +14,19 @@ class Post_Serializer(serializers.ModelSerializer):
   class Meta:
     model = Post
     fields = '__all__'
+    
+class Post_Serializer(serializers.BaseSerializer):
+  def to_representation(self,instance):
+    return {
+      "id":instance.id,
+      "content": instance.content,
+      "user": instance.user.name,
+    }
+    
+class Comment_Serializer(serializers.BaseSerializer):
+    def to_representation(self,instance):
+      return {
+      "id":instance.id,
+      "content": instance.content,
+      "user": instance.post.user.name,
+    }
