@@ -7,3 +7,5 @@ class UserSerializer(serializers.BaseSerializer):
       "username": instance.username,
       "password": instance.password,
     }
+    
+    
